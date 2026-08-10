@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <link rel="stylesheet" href="popup.css" />
+</head>
+<body>
+  <div class="pp">
+    <div class="pp-head">
+      <span class="pp-title">B站过滤 · 本机面板</span>
+      <span class="pp-sub">数据仅存本机</span>
+    </div>
+
+    <div class="pp-stats">
+      <div class="pp-m"><div class="pp-ml">感兴趣</div><div class="pp-mv" id="mLike">0</div></div>
+      <div class="pp-m"><div class="pp-ml">不感兴趣</div><div class="pp-mv" id="mDis">0</div></div>
+      <div class="pp-m"><div class="pp-ml">规则屏蔽</div><div class="pp-mv" id="mRule">0</div></div>
+    </div>
+
+    <div class="pp-sec">
+      <div class="pp-h">按规则屏蔽</div>
+      <div class="pp-label">屏蔽 UP主</div>
+      <div class="pp-list" id="lstUp"></div>
+      <div class="pp-add">
+        <input id="inUp" placeholder="UP主名 或 mid:12345" />
+        <button data-add="ups" type="button">添加</button>
+      </div>
+
+      <div class="pp-label">屏蔽分区</div>
+      <div class="pp-list" id="lstTid"></div>
+      <div class="pp-add">
+        <input id="inTid" placeholder="分区名 / 编号" />
+        <button data-add="tids" type="button">添加</button>
+      </div>
+
+      <div class="pp-label">屏蔽关键词（标题含即屏蔽）</div>
+      <div class="pp-list" id="lstKw"></div>
+      <div class="pp-add">
+        <input id="inKw" placeholder="关键词" />
+        <button data-add="keywords" type="button">添加</button>
+      </div>
+    </div>
+
+    <div class="pp-sec">
+      <div class="pp-h">设置</div>
+      <label class="pp-row"><span>过滤「广告」视频（默认开）</span><input type="checkbox" id="s_hideAds" /></label>
+      <label class="pp-row"><span>过滤「创作推广」视频</span><input type="checkbox" id="s_hidePromoted" /></label>
+      <label class="pp-row"><span>突出感兴趣（绿色高亮）</span><input type="checkbox" id="s_highlightLiked" /></label>
+      <label class="pp-row"><span>玻璃蒙版「不感兴趣」视频</span><input type="checkbox" id="s_hideDisliked" /></label>
+      <label class="pp-row"><span>显示「已隐藏」条</span><input type="checkbox" id="s_showHiddenBar" /></label>
+    </div>
+
+    <div class="pp-sec">
+      <div class="pp-h">导出感兴趣视频文案</div>
+      <p class="pp-tip">把标记为「感兴趣」的视频字幕/台词，整理为每个 ≤300 字的本地 .txt（文件名：标题_Up主_发布日期）。</p>
+      <button id="btnExportText" type="button">导出感兴趣视频文案（≤300字）</button>
+      <div id="exportStatus" class="pp-status"></div>
+    </div>
+
+    <div class="pp-sec pp-data">
+      <button id="btnExport" type="button">导出 JSON</button>
+      <button id="btnImport" type="button">导入 JSON</button>
+      <button id="btnClear" class="danger" type="button">清空全部</button>
+      <input type="file" id="fileInput" accept="application/json" style="display:none" />
+    </div>
+  </div>
+  <script src="../src/store.js"></script>
+  <script src="popup.js"></script>
+</body>
+</html>
